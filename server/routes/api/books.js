@@ -7,7 +7,7 @@ const Book = require("../../models/book");
 // @route GET api/books/test
 // @description tests books route
 // @access Public
-router.get("/test", (req, res) => res.send("book route testing!"));
+router.get("/test", (req, res) => res.send("teste book sucesso!"));
 
 // @route GET api/books
 // @description Get all books
@@ -34,7 +34,7 @@ router.post("/", (req, res) => {
   Book.create(req.body)
     .then((book) => res.json({ msg: "Book added successfully" }))
     .catch((err) => {
-      res.status(400).json({ error: "Unable to add this book" });
+      res.status(400).json({ error: "Unable to add this book: " + err });
       console.log(err);
     });
 });

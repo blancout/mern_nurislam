@@ -9,7 +9,7 @@ function ShowBookList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8082/api/books")
+      .get("http://127.0.0.1:8082/api/books")
       .then((res) => {
         setBooks(res.data);
       })
@@ -20,7 +20,7 @@ function ShowBookList() {
 
   const bookList =
     books.length === 0
-      ? "there is no book record!"
+      ? "Sem informações de livros!"
       : books.map((book, k) => <BookCard book={book} key={k} />);
 
   return (

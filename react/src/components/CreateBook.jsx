@@ -24,7 +24,7 @@ const CreateBook = (props) => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:8082/api/books", book)
+      .post("http://127.0.0.1:8082/api/books", book)
       .then((res) => {
         setBook({
           title: "",
@@ -32,7 +32,7 @@ const CreateBook = (props) => {
           author: "",
           description: "",
           published_date: "",
-          publisher: "",
+          publisher: ""
         });
 
         // Push to /
