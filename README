@@ -7,4 +7,14 @@
 # https://github.com/david4473/MERN_application/tree/main/server (server)
 # https://github.com/david4473/MERN_application/tree/main/React (client)
 
+# rodar server
+# cd server
+# npm run dev
+
+# rodar client (react)
+# cd react
+# npm run dev
+# http://localhost:5173
+
+
 

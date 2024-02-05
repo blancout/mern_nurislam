@@ -15,6 +15,7 @@ function ShowBookList() {
       })
       .catch((err) => {
         console.log("Error from ShowBookList");
+        //console.log(err.data);
       });
   }, []);
 
