@@ -7,6 +7,9 @@ require("dotenv").config();
 
 const app = express();
 
+// use the cors middleware with the
+// origin and credentials options
+app.use(cors());
 //app.use(cors({ origin: true, credentials: true }));
 //app.use(cors({  origin: 'http://127.0.0.1:8082/api/books', // use your actual domain name (or localhost), using * is not recommended
 //                 methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'],
@@ -20,17 +23,13 @@ const app = express();
 //   next();
 // })
 
-// use the body-parser middleware to parse JSON and URL-encoded data
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
-
-// use the cors middleware with the
-// origin and credentials options
-app.use(cors());
-
 // use the routes module as a middleware
 // for the /api/books path
 app.use("/api/books", routes);
+
+// use the body-parser middleware to parse JSON and URL-encoded data
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Init Middleware
 app.use(express.json({ extended: false }));
