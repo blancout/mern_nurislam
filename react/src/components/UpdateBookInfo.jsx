@@ -15,10 +15,12 @@ function UpdateBookInfo(props) {
 
   const { id } = useParams();
   const navigate = useNavigate();
+  const pathapi = import.meta.env.VITE_APP_API_URL
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:8082/api/books/${id}`)
+      //.get(`http://127.0.0.1:8082/api/books/${id}`)
+      .get(pathapi + `${id}`)
       .then((res) => {
         setBook({
           title: res.data.title,
@@ -51,7 +53,8 @@ function UpdateBookInfo(props) {
     };
 
     axios
-      .put(`http://127.0.0.1:8082/api/books/${id}`, data)
+      //.put(`http://127.0.0.1:8082/api/books/${id}`, data)
+      .put(pathapi + `${id}`, data)      
       .then((res) => {
         navigate(`/show-book/${id}`);
       })

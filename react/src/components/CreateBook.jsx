@@ -8,10 +8,10 @@ const CreateBook = (props) => {
   // Define the state with useState hook
   const navigate = useNavigate();
   const [book, setBook] = useState({
-    title: "",
-    isbn: "",
-    author: "",
-    description: "",
+    title: "x",
+    isbn: "x",
+    author: "x",
+    description: "x",
     published_date: "",
     publisher: "",
   });
@@ -25,11 +25,12 @@ const CreateBook = (props) => {
 
     axios
       .post("http://127.0.0.1:8082/api/books", book)
+      //.post("http://172.26.91.28:8082/api/books", book)      
       .then((res) => {
         setBook({
-          title: "",
-          isbn: "",
-          author: "",
+          title: "x",
+          isbn: "x",
+          author: "x",
           description: "",
           published_date: "",
           publisher: ""
