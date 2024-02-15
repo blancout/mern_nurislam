@@ -7,7 +7,7 @@ const Book = require("../../models/book");
 // @route GET api/books/test
 // @description tests books route
 // @access Public
-router.get("/test", (req, res) => res.send("teste book sucesso!"));
+router.get("/test", (req, res) => res.send("teste api books sucesso!"));
 
 // @route GET api/books
 // @description Get all books
@@ -15,7 +15,7 @@ router.get("/test", (req, res) => res.send("teste book sucesso!"));
 router.get("/", (req, res) => {
   Book.find()
     .then((books) => res.json(books))
-    .catch((err) => res.status(404).json({ nobooksfound: "No Books found" }));
+    .catch((err) => res.status(404).json({ nobooksfound: "Livros não encontrados!" }));
 });
 
 // @route GET api/books/:id
@@ -24,22 +24,19 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   Book.findById(req.params.id)
     .then((book) => res.json(book))
-    .catch((err) => res.status(404).json({ nobookfound: "No Book found" }));
+    .catch((err) => res.status(404).json({ nobookfound: "Livro nao localizado" }));
 });
 
-// @route GET api/books
+// @route POST api/books
 // @description add/save book
 // @access Public
 router.post("/", (req, res) => {
   Book.create(req.body)
-    .then((book) => res.json({ msg: "Book added successfully" }))
-    .catch((err) => {
-      res.status(400).json({ error: "Unable to add this book: " + err });
-      console.log(err);
-    });
+    .then((book) => res.json({ msg: "Livro incluido com sucesso" }))
+    .catch(err => res.status(400).json({ error: "Erro na inclusao do livro: " + err }));
 });
 
-// @route GET api/books/:id
+// @route PUT api/books/:id
 // @book description update
 // @access Public
 router.put("/:id", (req, res) => {
@@ -55,8 +52,8 @@ router.put("/:id", (req, res) => {
 // @access Public
 router.delete("/:id", (req, res) => {
   Book.findByIdAndDelete(req.params.id)
-    .then((book) => res.json({ mgs: "Book entry deleted successfully" }))
-    .catch((err) => res.status(404).json({ error: "No such a book" }));
+    .then((book) => res.json({ mgs: "Livro excluido com sucesso" }))
+    .catch((err) => res.status(404).json({ error: "Livro nao localizado" }));
 });
 
 module.exports = router;

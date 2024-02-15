@@ -21,7 +21,7 @@ function ShowBookList() {
 
   const bookList =
     books.length === 0
-      ? "Sem informações de livros!"
+      ? "Nenhum livro localizado !"
       : books.map((book, k) => <BookCard book={book} key={k} />);
 
   return (

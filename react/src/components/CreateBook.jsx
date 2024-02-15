@@ -8,12 +8,12 @@ const CreateBook = (props) => {
   // Define the state with useState hook
   const navigate = useNavigate();
   const [book, setBook] = useState({
-    title: "x",
-    isbn: "x",
-    author: "x",
-    description: "x",
-    published_date: "",
-    publisher: "",
+    title: 'x1',
+    isbn: 'x2',
+    author: 'x3',
+    description: 'x4',
+    published_date: '02/02/2020',
+    publisher: 'x6',
   });
 
   const onChange = (e) => {
@@ -24,13 +24,14 @@ const CreateBook = (props) => {
     e.preventDefault();
 
     axios
-      .post("http://127.0.0.1:8082/api/books", book)
       //.post("http://172.26.91.28:8082/api/books", book)      
+      //.post("http://172.26.80.1:8082/api/books", book)      
+      .post("http://127.0.0.1:8082/api/books", book)
       .then((res) => {
         setBook({
-          title: "x",
-          isbn: "x",
-          author: "x",
+          title: "",
+          isbn: "",
+          author: "",
           description: "",
           published_date: "",
           publisher: ""
@@ -40,7 +41,7 @@ const CreateBook = (props) => {
         navigate("/");
       })
       .catch((err) => {
-        console.log("Error in CreateBook!");
+        console.log("Erro em CreateBook!");
       });
   };
 
