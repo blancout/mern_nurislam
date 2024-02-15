@@ -7,13 +7,15 @@ import { useNavigate } from "react-router-dom";
 const CreateBook = (props) => {
   // Define the state with useState hook
   const navigate = useNavigate();
+  const pathapi = import.meta.env.VITE_APP_API_URL
+
   const [book, setBook] = useState({
-    title: 'x1',
-    isbn: 'x2',
-    author: 'x3',
-    description: 'x4',
-    published_date: '02/02/2020',
-    publisher: 'x6',
+    title: "",
+    isbn: "",
+    author: "",
+    description: "",
+    published_date: "",
+    publisher: ""
   });
 
   const onChange = (e) => {
@@ -22,11 +24,12 @@ const CreateBook = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
+    
     axios
       //.post("http://172.26.91.28:8082/api/books", book)      
       //.post("http://172.26.80.1:8082/api/books", book)      
-      .post("http://127.0.0.1:8082/api/books", book)
+      //.post("http://127.0.0.1:8082/api/books", book)
+      .post(pathapi, book)
       .then((res) => {
         setBook({
           title: "",

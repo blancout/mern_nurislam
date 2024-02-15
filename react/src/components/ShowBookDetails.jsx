@@ -8,21 +8,24 @@ function ShowBookDetails(props) {
 
   const { id } = useParams();
   const navigate = useNavigate();
+  const pathapi = import.meta.env.VITE_APP_API_URL
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8082/api/books/${id}`)
+      //.get(`http://localhost:8082/api/books/${id}`)
+      .get(pathapi + `${id}`)
       .then((res) => {
         setBook(res.data);
       })
       .catch((err) => {
-        console.log("Error from ShowBookDetails");
+        console.log("Erro na exibição dos detalhes (ShowBookDetails)");
       });
   }, [id]);
 
   const onDeleteClick = (id) => {
     axios
-      .delete(`http://localhost:8082/api/books/${id}`)
+      //.delete(`http://localhost:8082/api/books/${id}`)
+      .delete(pathapi + `${id}`)
       .then((res) => {
         navigate("/");
       })

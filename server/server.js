@@ -30,16 +30,17 @@ app.use((req, res, next) => {
    next();
 })
 
-// use the routes module as a middleware
-// for the /api/books path
-app.use("/api/books", routes);
-
 // use the body-parser middleware to parse JSON and URL-encoded data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Init Middleware
 app.use(express.json({ extended: false }));
+
+// use the routes module as a middleware
+// for the /api/books path
+// esse use deve ser o ultimo anes do connectDB para evitar erros na inclusao
+app.use("/api/books", routes);
 
 // Connect Database
 connectDB();

@@ -6,10 +6,12 @@ import BookCard from "./BookCard";
 
 function ShowBookList() {
   const [books, setBooks] = useState([]);
+  const pathapi = import.meta.env.VITE_APP_API_URL
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8082/api/books")
+      //.get("http://127.0.0.1:8082/api/books")
+      .get(pathapi)
       .then((res) => {
         setBooks(res.data);
       })
